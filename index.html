@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivam Pot Bhandar</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8f3ee;
+    color: #2c2c2c;
+}
+
+/* NAV */
+nav {
+    position: fixed;
+    width: 100%;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    z-index: 1000;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: url('images/hero.jpg') center/cover fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(21, 19, 19);
+}
+
+.hero h1 {
+    font-size: 70px;
+    font-family: 'Playfair Display';
+}
+
+.hero p {
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+/* SECTION */
+.section {
+    padding: 80px 10%;
+}
+
+.section h2 {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 40px;
+    font-family: 'Playfair Display';
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 25px;
+}
+
+.card {
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    background: #2c1e14;
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>Shivam Pot Bhandar</h2>
+    <div>Handmade | Eco-Friendly | Traditional</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div data-aos="fade-up">
+        <h1>Shivam Pot Bhandar</h1>
+        <p>Century of heritage, shaped by hand</p>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" data-aos="fade-up">
+    <h2>About Us</h2>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+        All our creations are handmade, chemical-free, and eco-friendly. 
+        We preserve Indian culture through every piece of pottery.
+    </p>
+</section>
+
+<!-- FLOWER POTS -->
+<section class="section">
+    <h2 data-aos="fade-up">Flower Pots</h2>
+    <div class="grid">
+        <div class="card" data-aos="zoom-in"><img src="images/pots1.jpg"></div>
+        <div class="card" data-aos="zoom-in"><img src="images/pots2.jpg"></div>
+        <div class="card" data-aos="zoom-in"><img src="images/pots3.jpg"></div>
+    </div>
+</section>
+
+<!-- LAMPS -->
+<section class="section">
+    <h2 data-aos="fade-up">Lamps</h2>
+    <div class="grid">
+        <div class="card" data-aos="zoom-in"><img src="images/lamps1.jpg"></div>
+        <div class="card" data-aos="zoom-in"><img src="images/lamps2.jpg"></div>
+    </div>
+</section>
+
+<!-- SHOWPIECES -->
+<section class="section">
+    <h2 data-aos="fade-up">Showpieces</h2>
+    <div class="grid">
+        <div class="card" data-aos="zoom-in"><img src="images/show1.jpg"></div>
+        <div class="card" data-aos="zoom-in"><img src="images/show2.jpg"></div>
+    </div>
+</section>
+
+<!-- TEA CUPS -->
+<section class="section">
+    <h2 data-aos="fade-up">Tea Cups</h2>
+    <div class="grid">
+        <div class="card" data-aos="zoom-in"><img src="images/cups1.jpg"></div>
+        <div class="card" data-aos="zoom-in"><img src="images/cups2.jpg"></div>
+    </div>
+</section>
+
+<!-- WALL PLATES -->
+<section class="section">
+    <h2 data-aos="fade-up">Wall Plates</h2>
+    <div class="grid">
+        <div class="card" data-aos="zoom-in"><img src="images/plates1.jpg"></div>
+        <div class="card" data-aos="zoom-in"><img src="images/plates2.jpg"></div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<footer>
+    <h2>Contact Us</h2>
+    <p>📍 Vadgaon Sheri, Pune</p>
+    <p>📞 8483840533</p>
+    <p>📷 @shivampotbhandar</p>
+</footer>
+
+<!-- WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/918483840533">Chat on WhatsApp</a>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 1000 });
+</script>
+
+</body>
+</html>
