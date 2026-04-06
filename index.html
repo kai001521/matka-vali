@@ -1,200 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shivam Pot Bhandar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivam Pot Bhandar | Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
+    <style>
+        /* =========================================
+   AMAZON-STYLE COLOR PALETTE
+   ========================================= */
+        :root {
+            --amz-dark: #131921;
+            --amz-light-nav: #232f3e;
+            --amz-orange: #febd69;
+            --amz-yellow-btn: #ffd814;
+            --amz-yellow-hover: #f7ca00;
+            --amz-bg-gray: #eaeded;
+            --amz-link-blue: #007185;
+            --amz-price-red: #B12704;
+            --text-dark: #0f1111;
+        }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #f8f3ee;
-    color: #2c2c2c;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* NAV */
-nav {
-    position: fixed;
-    width: 100%;
-    padding: 15px 40px;
-    display: flex;
-    justify-content: space-between;
-    background: rgba(0,0,0,0.6);
-    color: white;
-    z-index: 1000;
-}
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--amz-bg-gray);
+            overflow-x: hidden;
+        }
 
-/* HERO */
-.hero {
-    height: 100vh;
-    background: url('images/hero.jpg') center/cover fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: rgb(21, 19, 19);
-}
+        /* =========================================
+   HEADER & NAVIGATION
+   ========================================= */
+        header {
+            background-color: var(--amz-dark);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.hero h1 {
-    font-size: 70px;
-    font-family: 'Playfair Display';
-}
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
 
-.hero p {
-    font-size: 22px;
-    margin-top: 10px;
-}
+        .logo span {
+            color: var(--amz-orange);
+        }
 
-/* SECTION */
-.section {
-    padding: 80px 10%;
-}
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            flex-grow: 1;
+            height: 40px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
 
-.section h2 {
-    text-align: center;
-    font-size: 42px;
-    margin-bottom: 40px;
-    font-family: 'Playfair Display';
-}
+        .search-bar select {
+            background: #f3f3f3;
+            border: none;
+            padding: 0 10px;
+            border-right: 1px solid #cdcdcd;
+            color: #555;
+            outline: none;
+            cursor: pointer;
+        }
 
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-    gap: 25px;
-}
+        .search-bar input {
+            flex-grow: 1;
+            border: none;
+            padding: 0 15px;
+            font-size: 15px;
+            outline: none;
+        }
 
-.card {
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    background: white;
-}
+        .search-bar button {
+            background: var(--amz-orange);
+            border: none;
+            width: 45px;
+            cursor: pointer;
+            font-size: 18px;
+        }
 
-.card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    transition: 0.5s;
-}
+        .search-bar button:hover {
+            background: #f3a847;
+        }
 
-.card:hover img {
-    transform: scale(1.1);
-}
+        /* Header Actions */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+        }
 
-/* WHATSAPP BUTTON */
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-}
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
 
-/* FOOTER */
-footer {
-    background: #2c1e14;
-    color: white;
-    text-align: center;
-    padding: 40px;
-}
-</style>
+        .nav-link span:first-child {
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .nav-link span:last-child {
+            font-weight: 700;
+        }
+
+        .cart-icon {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .cart-icon span {
+            color: var(--amz-orange);
+            margin-right: 5px;
+            font-size: 20px;
+        }
+
+        /* Sub-Nav */
+        .sub-nav {
+            background-color: var(--amz-light-nav);
+            color: white;
+            padding: 8px 20px;
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .sub-nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .sub-nav a:hover {
+            border-bottom: 1px solid white;
+        }
+
+        /* =========================================
+   MAIN CONTENT & GRID
+   ========================================= */
+        .main-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .category-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            margin-top: 20px;
+            padding-left: 5px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* PRODUCT CARD */
+        .card {
+            background: white;
+            border-radius: 4px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s;
+            position: relative;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            background: #f8f8f8;
+        }
+
+        .card-title {
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: 500;
+            line-height: 1.4;
+            margin-bottom: 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-title:hover {
+            color: var(--amz-orange);
+            cursor: pointer;
+        }
+
+        .rating {
+            color: #ffa41c;
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rating span {
+            color: var(--amz-link-blue);
+            font-size: 12px;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 5px;
+        }
+
+        .currency {
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .delivery-info {
+            font-size: 12px;
+            color: #565959;
+            margin-bottom: 15px;
+        }
+
+        .delivery-info b {
+            color: var(--text-dark);
+        }
+
+        .add-btn {
+            background-color: var(--amz-yellow-btn);
+            border: 1px solid #fcd200;
+            border-radius: 20px;
+            /* Pill shape */
+            padding: 8px 0;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            margin-top: auto;
+            transition: background 0.2s;
+        }
+
+        .add-btn:hover {
+            background-color: var(--amz-yellow-hover);
+        }
+
+        /* TOAST NOTIFICATION */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #0f1111;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 15px;
+            position: fixed;
+            z-index: 2000;
+            right: 20px;
+            top: 80px;
+            /* Appears below header */
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                padding: 10px;
+            }
+
+            .search-bar {
+                order: 3;
+                /* Pushes search bar to next line on mobile */
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .nav-link.hide-mobile {
+                display: none;
+            }
+
+            .sub-nav {
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<nav>
-    <h2>Shivam Pot Bhandar</h2>
-    <div>Handmade | Eco-Friendly | Traditional</div>
-</nav>
+    <header>
+        <a href="#" class="logo">Shivam Pot <span>Bhandar</span></a>
 
-<!-- HERO -->
-<section class="hero">
-    <div data-aos="fade-up">
-        <h1>Shivam Pot Bhandar</h1>
-        <p>Century of heritage, shaped by hand</p>
+        <div class="search-bar">
+            <select>
+                <option>All</option>
+                <option>Pots</option>
+                <option>Dining</option>
+                <option>Decor</option>
+            </select>
+            <input type="text" placeholder="Search for eco-friendly pottery...">
+            <button aria-label="Search">🔍</button>
+        </div>
+
+        <div class="header-actions">
+            <div class="nav-link hide-mobile">
+                <span>Hello, Sign in</span>
+                <span>Account & Lists</span>
+            </div>
+            <div class="nav-link hide-mobile">
+                <span>Returns</span>
+                <span>& Orders</span>
+            </div>
+            <div class="cart-icon" onclick="alert('Proceeding to checkout with ' + itemsInCart + ' items.')">
+                <span id="cart-count">0</span>🛒 Cart
+            </div>
+        </div>
+    </header>
+
+    <div class="sub-nav">
+        <a href="#">☰ All</a>
+        <a href="#">Best Sellers</a>
+        <a href="#">Garden Pots</a>
+        <a href="#">Kitchenware</a>
+        <a href="#">Home Decor</a>
+        <a href="#">Idols & Statues</a>
     </div>
-</section>
 
-<!-- ABOUT -->
-<section class="section" data-aos="fade-up">
-    <h2>About Us</h2>
-    <p style="text-align:center; max-width:800px; margin:auto;">
-        All our creations are handmade, chemical-free, and eco-friendly. 
-        We preserve Indian culture through every piece of pottery.
-    </p>
-</section>
+    <div class="main-container">
 
-<!-- FLOWER POTS -->
-<section class="section">
-    <h2 data-aos="fade-up">Flower Pots</h2>
-    <div class="grid">
-        <div class="card" data-aos="zoom-in"><img src="images/pots1.jpg"></div>
-        <div class="card" data-aos="zoom-in"><img src="images/pots2.jpg"></div>
-        <div class="card" data-aos="zoom-in"><img src="images/pots3.jpg"></div>
+        <h2 class="category-title">Garden & Planters</h2>
+        <div class="product-grid">
+            <div class="card">
+                <img src="images/pots1.jpg" alt="Pot">
+                <div class="card-title">Handcrafted Tulsi Vrindavan Pot for Home Balcony (Standard Size)</div>
+                <div class="rating">★★★★★ <span>(1,245)</span></div>
+                <div class="price-container"><span class="currency">₹</span><span class="price">450</span></div>
+                <div class="delivery-info">FREE Delivery by <b>Tomorrow, 5 PM</b></div>
+                <button class="add-btn" onclick="addToCart('Tulsi Vrindavan')">Add to Cart</button>
+            </div>
+
+            <div class="card">
+                <img src="images/pots2.jpg" alt="Pot">
+                <div class="card-title">Terracotta Round Planter Pot for Indoor/Outdoor Plants - 8 Inch</div>
+                <div class="rating">★★★★☆ <span>(856)</span></div>
+                <div class="price-container"><span class="currency">₹</span><span class="price">299</span></div>
+                <div class="delivery-info">FREE Delivery by <b>Wednesday</b></div>
+                <button class="add-btn" onclick="addToCart('Round Planter')">Add to Cart</button>
+            </div>
+
+            <div class="card">
+                <img src="images/pots3.jpg" alt="Pot">
+                <div class="card-title">Hanging Clay Balcony Planter with Natural Jute Rope</div>
+                <div class="rating">★★★★☆ <span>(412)</span></div>
+                <div class="price-container"><span class="currency">₹</span><span class="price">350</span></div>
+                <div class="delivery-info">FREE Delivery by <b>Thursday</b></div>
+                <button class="add-btn" onclick="addToCart('Hanging Planter')">Add to Cart</button>
+            </div>
+        </div>
+
+        <h2 class="category-title">Traditional Kitchenware</h2>
+        <div class="product-grid">
+            <div class="card">
+                <img src="images/cups1.jpg" alt="Cups">
+                <div class="card-title">Pure Clay Chai Kulhad (Set of 6) - Eco-Friendly Tea Cups</div>
+                <div class="rating">★★★★★ <span>(3,421)</span></div>
+                <div class="price-container"><span class="currency">₹</span><span class="price">250</span></div>
+                <div class="delivery-info">FREE Delivery by <b>Tomorrow</b></div>
+                <button class="add-btn" onclick="addToCart('Kulhad Set')">Add to Cart</button>
+            </div>
+
+            <div class="card">
+                <img src="images/cups2.jpg" alt="Jug">
+                <div class="card-title">Natural Cooling Clay Water Jug / Pitcher with Lid - 1.5 Liters</div>
+                <div class="rating">★★★★☆ <span>(1,105)</span></div>
+                <div class="price-container"><span class="currency">₹</span><span class="price">399</span></div>
+                <div class="delivery-info">FREE Delivery by <b>Wednesday</b></div>
+                <button class="add-btn" onclick="addToCart('Water Jug')">Add to Cart</button>
+            </div>
+
+            <div class="card">
+                <img src="images/handi.jpg" alt="Handi">
+                <div class="card-title">Earthen Cooking Handi / Clay Pot for Biryani & Curries (3L)</div>
+                <div class="rating">★★★★★ <span>(678)</span></div>
+                <div class="price-container"><span class="currency">₹</span><span class="price">599</span></div>
+                <div class="delivery-info">FREE Delivery by <b>Tomorrow</b></div>
+                <button class="add-btn" onclick="addToCart('Cooking Handi')">Add to Cart</button>
+            </div>
+
+            <div class="card">
+                <img src="images/bottle.jpg" alt="Bottle">
+                <div class="card-title">Terracotta Water Bottle with Cork Stopper - 1000ml</div>
+                <div class="rating">★★★★☆ <span>(890)</span></div>
+                <div class="price-container"><span class="currency">₹</span><span class="price">299</span></div>
+                <div class="delivery-info">FREE Delivery by <b>Thursday</b></div>
+                <button class="add-btn" onclick="addToCart('Clay Water Bottle')">Add to Cart</button>
+            </div>
+        </div>
+
+        <h2 class="category-title">Home Decor & Festival</h2>
+        <div class="product-grid">
+            <div class="card">
+                <img src="images/lamps1.jpg" alt="Diya">
+                <div class="card-title">Handpainted Diwali Diya Set (12 Pieces) - Assorted Colors</div>
+                <div class="rating">★★★★★ <span>(5,622)</span></div>
+                <div class="price-container"><span class="currency">₹</span><span class="price">199</span></div>
+                <div class="delivery-info">FREE Delivery by <b>Tomorrow</b></div>
+                <button class="add-btn" onclick="addToCart('Diya Set')">Add to Cart</button>
+            </div>
+
+            <div class="card">
+                <img src="images/lamps2.jpg" alt="Lantern">
+                <div class="card-title">Hanging Terracotta Clay Lantern Lamp for Balcony Decor</div>
+                <div class="rating">★★★★☆ <span>(315)</span></div>
+                <div class="price-container"><span class="currency">₹</span><span class="price">550</span></div>
+                <div class="delivery-info">FREE Delivery by <b>Wednesday</b></div>
+                <button class="add-btn" onclick="addToCart('Hanging Lantern')">Add to Cart</button>
+            </div>
+
+            <div class="card">
+                <img src="images/plates1.jpg" alt="Wall Plate">
+                <div class="card-title">Warli Art Handpainted Terracotta Wall Plates (Set of 3)</div>
+                <div class="rating">★★★★★ <span>(288)</span></div>
+                <div class="price-container"><span class="currency">₹</span><span class="price">899</span></div>
+                <div class="delivery-info">FREE Delivery by <b>Friday</b></div>
+                <button class="add-btn" onclick="addToCart('Wall Plates Set')">Add to Cart</button>
+            </div>
+
+            <div class="card">
+                <img src="images/idol.jpg" alt="Idol">
+                <div class="card-title">Eco-Friendly Clay Ganesha Idol for Puja - 10 Inch</div>
+                <div class="rating">★★★★★ <span>(1,845)</span></div>
+                <div class="price-container"><span class="currency">₹</span><span class="price">499</span></div>
+                <div class="delivery-info">FREE Delivery by <b>Tomorrow</b></div>
+                <button class="add-btn" onclick="addToCart('Ganesha Idol')">Add to Cart</button>
+            </div>
+        </div>
+
     </div>
-</section>
 
-<!-- LAMPS -->
-<section class="section">
-    <h2 data-aos="fade-up">Lamps</h2>
-    <div class="grid">
-        <div class="card" data-aos="zoom-in"><img src="images/lamps1.jpg"></div>
-        <div class="card" data-aos="zoom-in"><img src="images/lamps2.jpg"></div>
-    </div>
-</section>
+    <div id="toast">✅ Added to Cart</div>
 
-<!-- SHOWPIECES -->
-<section class="section">
-    <h2 data-aos="fade-up">Showpieces</h2>
-    <div class="grid">
-        <div class="card" data-aos="zoom-in"><img src="images/show1.jpg"></div>
-        <div class="card" data-aos="zoom-in"><img src="images/show2.jpg"></div>
-    </div>
-</section>
+    <script>
+        let itemsInCart = 0;
 
-<!-- TEA CUPS -->
-<section class="section">
-    <h2 data-aos="fade-up">Tea Cups</h2>
-    <div class="grid">
-        <div class="card" data-aos="zoom-in"><img src="images/cups1.jpg"></div>
-        <div class="card" data-aos="zoom-in"><img src="images/cups2.jpg"></div>
-    </div>
-</section>
+        function addToCart(itemName) {
+            // Update Cart Counter
+            itemsInCart++;
+            document.getElementById('cart-count').innerText = itemsInCart;
 
-<!-- WALL PLATES -->
-<section class="section">
-    <h2 data-aos="fade-up">Wall Plates</h2>
-    <div class="grid">
-        <div class="card" data-aos="zoom-in"><img src="images/plates1.jpg"></div>
-        <div class="card" data-aos="zoom-in"><img src="images/plates2.jpg"></div>
-    </div>
-</section>
+            // Show Toast Notification (Amazon style pop-in)
+            const toast = document.getElementById("toast");
+            toast.innerHTML = `✅ <b>${itemName}</b> added to Cart`;
+            toast.classList.add("show");
 
-<!-- CONTACT -->
-<footer>
-    <h2>Contact Us</h2>
-    <p>📍 Vadgaon Sheri, Pune</p>
-    <p>📞 8483840533</p>
-    <p>📷 @shivampotbhandar</p>
-</footer>
-
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/918483840533">Chat on WhatsApp</a>
-
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-AOS.init({ duration: 1000 });
-</script>
+            // Hide toast after 2.5 seconds
+            setTimeout(function () {
+                toast.classList.remove("show");
+            }, 2500);
+        }
+    </script>
 
 </body>
+
 </html>
